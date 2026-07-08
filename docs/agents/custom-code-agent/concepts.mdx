@@ -125,12 +125,15 @@ ACI extends Novu's workflow system; it does not replace it. Transactional workfl
   </Step>
 
   <Step title="Handler passes context to agent logic">
+    Your handler forwards the message and `ctx.history` to your LLM or custom logic.
   </Step>
 
   <Step title="Agent logic decides next action">
+    Your agent logic decides what should happen next.
   </Step>
 
   <Step title="Handler sends reply or signals">
+    Your handler returns a reply, calls `ctx.reply()`, or emits signals.
   </Step>
 
   <Step title="Novu posts the reply">
@@ -152,5 +155,8 @@ The same handler code works on every connected provider; adding a provider does 
   </Card>
   <Card icon="sparkles" href="/agents/custom-code-agent/frameworks/ai-sdk" title="AI SDK">
     Build end to end with `@novu/framework/ai-sdk`.
+  </Card>
+  <Card icon="link" href="/agents/custom-code-agent/frameworks/langchain" title="LangChain">
+    Build end to end with `@novu/framework/langchain`.
   </Card>
 </Columns>
