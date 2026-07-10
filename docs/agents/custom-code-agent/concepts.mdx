@@ -64,6 +64,7 @@ The same handler API applies no matter which provider sent the event or which mo
 | `onAction` | User clicks a button or selects from a card | Forms, buttons, dropdowns |
 | `onReaction` | User adds or removes a reaction | Feedback, follow-ups |
 | `onResolve` | Conversation marked resolved | Cleanup, analytics, summary |
+| `onError` | Turn fails in the handler | Log, suppress, custom reply, or generic user copy |
 
 Handlers connect Novu's delivery layer to your app. An `onMessage` handler might pass context to an LLM and return a reply through Novu.
 
