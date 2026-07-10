@@ -120,6 +120,8 @@ The CLI arguments are:
 
 Once the sync succeeds, the agent's overview page shows the updated production bridge URL.
 
+You can also set the bridge URL programmatically with [Update an agent bridge](/api-reference/agents/update-an-agent-bridge).
+
 <Warning>
   Local tunnel URLs cannot be activated in production — Novu returns `403 Forbidden` to prevent routing production traffic to a local machine.
 </Warning>
@@ -135,5 +137,8 @@ Once the sync succeeds, the agent's overview page shows the updated production b
   </Card>
   <Card icon="link" href="/agents/custom-code-agent/connecting-your-app" title="Connecting your app">
     Bridge route, `serve()`, and environment variables.
+  </Card>
+  <Card icon="code" href="/api-reference/agents/update-an-agent-bridge" title="Update an agent bridge API">
+    Set the bridge URL programmatically after deployment.
   </Card>
 </Columns>
