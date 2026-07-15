@@ -33,6 +33,34 @@ test('should trigger Kannel SMS axios request correctly', async () => {
   });
 });
 
+test('should keep the scheme when the host has one', async () => {
+  const { mockGet: fakeGet } = axiosSpy({
+    data: '0: Accepted for delivery',
+  });
+
+  const provider = new KannelSmsProvider({
+    host: 'https://sms.example.com',
+    port: '443',
+    from: '0000',
+  });
+
+  const testTo = '+7777';
+  const testContent = 'This is a test';
+
+  await provider.sendMessage({
+    content: testContent,
+    to: testTo,
+  });
+
+  expect(fakeGet).toHaveBeenCalledWith('https://sms.example.com:443/cgi-bin/sendsms', {
+    params: {
+      from: '0000',
+      text: testContent,
+      to: testTo,
+    },
+  });
+});
+
 test('should trigger Kannel SMS axios request correctly with _passthrough', async () => {
   const { mockGet: fakeGet } = axiosSpy({
     data: '0: Accepted for delivery',

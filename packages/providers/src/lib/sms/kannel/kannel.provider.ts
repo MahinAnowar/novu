@@ -21,7 +21,12 @@ export class KannelSmsProvider extends BaseProvider implements ISmsProvider {
     }
   ) {
     super();
-    this.apiBaseUrl = `http://${config.host}:${config.port}/cgi-bin`;
+    // A host may carry its own scheme, e.g. when Kannel sits behind TLS.
+    // Hosts without one keep defaulting to http, which is what Kannel's
+    // sendsms interface serves out of the box.
+    const host = config.host.trim().replace(/\/+$/, '');
+    const origin = /^https?:\/\//i.test(host) ? host : `http://${host}`;
+    this.apiBaseUrl = `${origin}:${config.port}/cgi-bin`;
     this.axiosInstance = axios.create();
   }
 
